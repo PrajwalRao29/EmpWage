@@ -12,6 +12,6 @@ case 2:wage=20*4;
 break;
 default: wage=0;
 }
-System.out.println(wage);
+System.out.println("Wage per month = "+wage*20);
 }
 }
