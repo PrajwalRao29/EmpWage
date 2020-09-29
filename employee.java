@@ -92,6 +92,7 @@ class SampleEmp implements Calculation
 				}
 			}
 			this.wage=wage;
+			System.out.println("Daily Wage="+w);
 			System.out.println("Wage per month = "+wage);
 		}
 	}
