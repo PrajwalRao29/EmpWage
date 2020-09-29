@@ -10,6 +10,7 @@ class employee
 		System.out.println("Enter the number of companies details to be added");
 		Scanner sc=new Scanner(System.in);
 		int y=sc.nextInt();
+		SampleEmp [] arr=new SampleEmp[y];
 		boolean j=true;
 		for(int i=0;i<y;i++)
 		{
@@ -23,48 +24,75 @@ class employee
 			int h=sc.nextInt();
 			SampleEmp e=new SampleEmp(n,w,d,h);
 			e.Calculate();
+			arr[i]=e;
 		}
-	}
-}
-class SampleEmp
-{
-	String name;
-	int wage;
-	int w=0;
-	int h=0;
-	int d=0;
-
-	public SampleEmp(String name,int w,int d,int h)
-	{
-		this.w=w;
-		this.h=h;
-		this.d=d;
-		this.name=name;
-	}
-	void Calculate()
-	{
-		int wage=0;
-		int hours=0;
-		int days=0;
+		while(j)
 		{
-			while(days<=d || hours<=h)
+			System.out.println("Do you want to access company details(Y/N)");
+			String acc=sc.next();
+			if(acc.equalsIgnoreCase("N"))
 			{
-				int randomValue=(int)Math.floor(Math.random()*10 % 3);
-				switch(randomValue)
+				j=false;
+				break;
+			}
+			System.out.println("Enter company name to access its details");
+			String s=sc.next();
+			int key=0;
+			for(int i=0;i<arr.length;i++)
+			{
+				if(arr[i].name.equalsIgnoreCase(s))
 				{
-				case 1:wage=wage+w*8;
-				hours=hours+8;
-				days=days+1;
-				break;
-				case 2:wage=wage+w*4;
-				hours=hours+4;
-				days=days+1;
-				break;
-				default: wage=wage+0;
+					System.out.println("WAGE="+arr[i].wage);
+					key=1;
+					break;
 				}
 			}
-			this.wage=wage;
-			System.out.println("Wage per month for company "+name+" is="+wage);
+			if(key==0)
+				{
+					System.out.println("Company details not found");		
+				}
 		}
 	}
 }
+	class SampleEmp
+	{
+		String name;
+		int wage;
+		int w=0;
+		int h=0;
+		int d=0;
+
+		public SampleEmp(String name,int w,int d,int h)
+		{
+			this.w=w;
+			this.h=h;
+			this.d=d;
+			this.name=name;
+		}
+		void Calculate()
+		{
+			int wage=0;
+			int hours=0;
+			int days=0;
+			{
+				while(days<=d || hours<=h)
+				{
+					int randomValue=(int)Math.floor(Math.random()*10 % 3);
+					switch(randomValue)
+					{
+					case 1:wage=wage+w*8;
+					hours=hours+8;
+					days=days+1;
+					break;
+					case 2:wage=wage+w*4;
+					hours=hours+4;
+					days=days+1;
+					break;
+					default: wage=wage+0;
+					}
+				}
+				this.wage=wage;
+				System.out.println("Wage per month = "+wage);
+			}
+		}
+	}
